@@ -49,7 +49,23 @@ pipeline{
 	        sh 'docker push $ACR_LOGIN_SERVER/${IMAGE_NAME}:${TAG}'
 	    }
 	   }
- 
+      stage('Connect to AKS') {
+  steps {
+    sh '''
+      az login --service-principal -u $AZ_CLIENT_ID -p $AZ_CLIENT_SECRET --tenant $AZ_TENANT_ID
+      az account set --subscription $AZ_SUBSCRIPTION_ID
+      az aks get-credentials --resource-group DevOps --name aks-cluster --overwrite-existing
+    '''
+   }
+  }
+  stage('Deploy to k8s cluster'){
+	  steps{
+	   sh '''
+	    kubectl apply -f deployment.yml
+		'''
+	   }
+	  
+	 }
  }
  post{
   always {

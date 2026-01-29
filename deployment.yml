@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: secretsanta-deploment
+ labels:
+  app: web
+spec:
+ replicas: 2
+ selector:
+  matchLabels:
+   app: web
+ template:
+  metadata:
+   name: secretsanta-pod
+   labels:
+    app: web
+  spec: 
+    containers:
+      - name: secretsanta-container
+        image: devopsproject1.azurecr.io/secretsanta-senerator:latest
+        ports:
+        - containerPort: 9090
