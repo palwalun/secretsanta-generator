@@ -21,7 +21,7 @@ pipeline{
     sh 'sudo docker build -t secretsanta-senerator:latest .'
     }
   }
-  }
+ 
   stage('Login to ACR') {
        steps {
          withCredentials([usernamePassword(
@@ -51,5 +51,5 @@ pipeline{
   cleanWs()
   }
  }
-
 }
+
