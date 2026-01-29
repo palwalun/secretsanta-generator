@@ -24,10 +24,10 @@ pipeline{
     }
   }
   stage('Build docker Image'){
-    steps{
-	when{
+  when{
 	 expression {params.ENV == 'TEST'}
 	}
+    steps{
 	 script{
 	 try{ 
     sh 'sudo docker build -t secretsanta-senerator:latest .'
@@ -67,10 +67,10 @@ pipeline{
 	    }
 	   }
 	  stage('Approval Gate'){
-	  steps{
 	  when{
 	   expression { params.ENV == 'PROD'}
 	  }
+	  steps{
 	  script{
 	   try{
 	   	   input message: "Please approve the Deployment"
