@@ -1,7 +1,7 @@
 pipeline{
  agent any
  environment{
-  ACR_LOGIN_SERVER = devopsproject1.azurecr.io
+  ACR_LOGIN_SERVER = 'devopsproject1.azurecr.io'
   IMAGE_NAME = 'secretsanta-senerator'
   TAG = 'latest'
  }
