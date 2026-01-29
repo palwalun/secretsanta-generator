@@ -1,9 +1,11 @@
 pipeline{
  agent any
  parameters{
+ choice(
  name: 'ENV',
  choices: ['DEV', 'TEST', 'PROD'],
  description: 'select environment'
+ )
  }
  environment{
   ACR_LOGIN_SERVER = "devopsproject1.azurecr.io"
