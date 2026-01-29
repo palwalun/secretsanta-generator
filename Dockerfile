@@ -1,5 +1,5 @@
 FROM eclipse-temurin:17.0.17_10-jre-alpine
 WORKDIR /app
-COPY --from=build /target/*.jar app.jar
+COPY  /target/*.jar app.jar
 EXPOSE 9999
 ENTRYPOINT ["java", "-jar", "app.jar"]
