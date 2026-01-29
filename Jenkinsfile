@@ -3,8 +3,7 @@ pipeline{
  parameters{
  name: 'ENV',
  choices: ['DEV', 'TEST', 'PROD'],
- description: stages for deployment
- 
+ description: 'select environment'
  }
  environment{
   ACR_LOGIN_SERVER = "devopsproject1.azurecr.io"
