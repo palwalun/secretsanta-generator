@@ -1,7 +1,7 @@
 pipeline{
  agent any
  environment{
-  ACR_LOGIN_SERVER = 'devopsproject1.azurecr.io'
+  ACR_LOGIN_SERVER = devopsproject1.azurecr.io
   IMAGE_NAME = 'secretsanta-senerator'
   TAG = 'latest'
  }
@@ -21,10 +21,6 @@ pipeline{
     sh 'sudo docker build -t secretsanta-senerator:latest .'
     }
   }
-  stage('push to ACR'){
-    steps{
-    sh 'sudo docker build -t secretsanta-senerator:latest .'
-    }
   }
   stage('Login to ACR') {
        steps {
@@ -40,6 +36,14 @@ pipeline{
            }
           }
          }
+		 stage('Tag Image') {
+        steps {
+         sh '''
+           docker tag ${IMAGE_NAME}:${TAG} \
+           $ACR_LOGIN_SERVER/${IMAGE_NAME}:${TAG}
+         '''
+          }
+        }
  
  }
  post{
