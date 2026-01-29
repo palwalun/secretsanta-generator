@@ -7,5 +7,5 @@ spec:
  selector:
   app: web
  ports:
-  - targetPort: 9090
+  - targetPort: 8080
     port: 80

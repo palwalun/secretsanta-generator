@@ -19,4 +19,4 @@ spec:
       - name: secretsanta-container
         image: devopsproject1.azurecr.io/secretsanta-senerator:latest
         ports:
-        - containerPort: 9090
+        - containerPort: 8080
