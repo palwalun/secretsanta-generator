@@ -1,5 +1,11 @@
 pipeline{
  agent any
+ parameters{
+ name: 'ENV',
+ choices: ['DEV', 'TEST', 'PROD'],
+ description: stages for deployment
+ 
+ }
  environment{
   ACR_LOGIN_SERVER = "devopsproject1.azurecr.io"
   IMAGE_NAME = 'secretsanta-senerator'
