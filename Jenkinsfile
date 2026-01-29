@@ -6,9 +6,9 @@ pipeline{
     checkout scm
     }
   }
-    stage('Build Image'){
+    stage('Build'){
     steps{
-    sh 'sudo docker build -t secretsanta-generator:latest .'
+    sh 'mvn clean package -DskipTests'
     }
   }
  
