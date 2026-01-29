@@ -56,7 +56,20 @@ pipeline{
 	        sh 'docker push $ACR_LOGIN_SERVER/${IMAGE_NAME}:${TAG}'
 	    }
 	   }
-  stage('Deploy to k8s cluster'){
+	  stage('Approval Gate'){
+	  steps{
+	  script{
+	   try{
+	   	   input message: "Please approve the Deployment"
+	   }
+	   catch(err){
+	   currentBuild.Result = 'FAILURE'
+	   }
+	  }
+	   }
+	  
+	 } 
+    stage('Deploy to k8s cluster'){
 	  steps{
 	   sh '''
 	    kubectl apply -f deployment.yml
