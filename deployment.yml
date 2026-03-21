@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
- name: secretsanta-deploment
+ name: secretsanta-deployment
  labels:
   app: web
 spec:
@@ -17,6 +17,6 @@ spec:
   spec: 
     containers:
       - name: secretsanta-container
-        image: devopsproject1.azurecr.io/secretsanta-senerator:latest
+        image: devopsproject2.azurecr.io/secretsanta-senerator:latest
         ports:
         - containerPort: 8080
