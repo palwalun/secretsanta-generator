@@ -2,7 +2,7 @@ pipeline{
  agent any
  environment{
   ACR_LOGIN_SERVER = "devopsproject2.azurecr.io"
-  IMAGE_NAME = 'secretsanta-senerator'
+  IMAGE_NAME = 'secretsanta-generator'
   TAG = 'latest'
  }
  stages{
@@ -18,7 +18,7 @@ pipeline{
   }
   stage('Build docker Image'){
     steps{
-    sh 'sudo docker build -t secretsanta-senerator:latest .'
+    sh 'sudo docker build -t secretsanta-generator:latest .'
     }
   }
  
@@ -58,11 +58,6 @@ pipeline{
 	   }
 	  
 	 }
- }
- post{
-  always {
-  cleanWs()
-  }
  }
 }
 
